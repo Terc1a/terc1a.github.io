@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <title>Люблю тебя</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Будешь моей валентинкой? :3</h1>
+        <div class="gif_container">
+            <img src="https://media.tenor.com/efbi1EpFlVUAAAAi/bugcat-capoo.gif" alt="Cute Capoo GIF">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Да !!!</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()">Нет >:(</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+    window.location.href = 'yes.html';
+}
+
+function moveButton() {
+    const noButton = document.getElementById('noButton');
+    const maxWidth = window.innerWidth - noButton.offsetWidth;
+    const maxHeight = window.innerHeight - noButton.offsetHeight;
+    const randomX = Math.random() * maxWidth;
+    const randomY = Math.random() * maxHeight;
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+    noButton.classList.add('wiggle');
+    noButton.addEventListener('animationend', () => {
+        noButton.classList.remove('wiggle');
+    }, { once: true });
+
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = `${noButton.offsetLeft + noButton.offsetWidth / 2}px`;
+    heart.style.top = `${noButton.offsetTop + noButton.offsetHeight / 2}px`;
+    document.body.appendChild(heart);
+    
+    heart.addEventListener('animationend', () => {
+        heart.remove();
+    }, { once: true });
+}
+    </script> 
+</body>
+</html>

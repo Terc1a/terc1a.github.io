@@ -1,2 +1,0 @@
-# vday
-For my lover
